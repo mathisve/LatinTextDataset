@@ -1,0 +1,4 @@
+tqdm==4.31.1
+selenium==3.141.0
+beautifulsoup4==4.7.1
+
