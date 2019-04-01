@@ -3,6 +3,8 @@ import sys
 import os
 from tqdm import tqdm
 
+import subprocess
+
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import chromedriver.ChromeDriverVersion
@@ -10,6 +12,7 @@ import chromedriver.ChromeDriverVersion
 
 class main(object):
 	def __init__(self):
+		self.checkIfFileExists()
 		self.websites = json.load(open('websites.json'))
 
 		try:
@@ -27,6 +30,11 @@ class main(object):
 		self.driver = webdriver.Chrome(str(chromedriver.ChromeDriverVersion.getPath()), options=self.chrome_options)
 		self.scrape()
 		self.driver.close()
+
+		try:
+			subprocess.call(["./getLength.out"])
+		except:
+			print("Was not able to call './getLenght.out' subprocess!")
 
 	def replace(self):
 		
@@ -86,7 +94,7 @@ class main(object):
 				
 				except Exception as e:
 
-					print(e)
+					#print(e)
 					pass
 
 			f.close()
@@ -99,6 +107,16 @@ class main(object):
 			return pageContent
 		except:
 			pass
+
+	def checkIfFileExists(self):
+		if(os.path.isfile("latincorpus.txt") == True):
+			a = input("File allready exists! Overwrite? Y/N  \n --> ")
+			if(a.upper() == 'Y'):
+				os.remove("latincorpus.txt")
+			else:
+				print("No permission to overwrite file! Shutting down!")
+				exit()
+
 
 
 if __name__ == "__main__":

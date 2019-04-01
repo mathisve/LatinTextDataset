@@ -5,11 +5,16 @@ using namespace std;
 
 int main()
 {
-	string line;
 	int linecount = 0;
 	int charcount = 0;
+	string filename = "latincorpus.txt";
+	string line;
 	ifstream myfile;
-	myfile.open("latincorpus.txt");
+	myfile.open(filename, std::ifstream::ate | std::ifstream::binary);
+	int filesize = myfile.tellg();
+	myfile.close();
+	
+	myfile.open(filename);
 	
 	if(myfile.is_open())
 	{
@@ -18,8 +23,21 @@ int main()
 			linecount += 1;
 			charcount += line.length();
 		}
-		cout << "file contains: " << linecount << " lines\n";
-		cout << "file contains: " << charcount << " chars\n";
+
+		
+
+		cout << "file " << filename << " is " << filesize/1000 << " KB or " << filesize/1000000 << " MB\n";
+
+		if(linecount < 1){
+			cout << "file contains: " << linecount << " line\n";
+		}else{
+			cout << "file contains: " << linecount << " lines\n";
+		}
+		if(charcount < 1){
+			cout << "file contains: " << charcount << " char\n";
+		}else{
+			cout << "file contains: " << charcount << " chars\n";
+		}
 	myfile.close();
 	}else
 	{
