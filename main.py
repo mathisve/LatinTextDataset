@@ -114,7 +114,7 @@ class main(object):
 			if(a.upper() == 'Y'):
 				os.remove("latincorpus.txt")
 			else:
-				print("No permission to overwrite file! Shutting down!")
+				print("No permission to overwrite {}! Shutting down!".format("latincorpus.txt"))
 				exit()
 
 
