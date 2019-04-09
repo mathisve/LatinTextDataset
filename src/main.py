@@ -1,3 +1,6 @@
+#Mathis Van Eetvelde 2019
+#refer to LICENSE.md for copyright and licensing info
+
 import json
 import sys
 import os
@@ -39,14 +42,14 @@ class main(object):
 	def replace(self):
 		
 		replacechars = ["1","2","3","4","5","6","7","8","9","0", "[",
-						"]", "\n", "1.","2.","3.","4.","5.","6.","7.",
+						"]", "1.","2.","3.","4.","5.","6.","7.",
 						"8.","9.","0.", "	", "     ", "  ", "(", ")", " A. ", " K. "]
 
 		listtext  = self.text.split(" ")
 		self.newlisttext = []
 
 		for word in listtext:
-			word = word.strip()
+			#word = word.strip()
 			if(word[:-3].isupper() == True):
 				word = ""
 

@@ -1,3 +1,6 @@
+//Mathis Van Eetvelde 2019
+//refer to LICENSE.md for copyright and licensing info
+
 #include <iostream>
 #include <fstream>
 #include <string>
